@@ -14,12 +14,12 @@ require_once 'lib/product-controller.php';
 require_once 'lib/product-index-controller.php';
 require_once 'lib/product-add-form-controller.php';
 require_once 'lib/product-model.php';
+require_once 'lib/user-model.php';
 
 $db = new DB();
 
 $router = new Router();
 $router->route();
-
 
 ?>
 </html>
