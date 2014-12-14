@@ -22,4 +22,8 @@ class DB {
 	public function query( $sql ) {
 		mysqli_query( self::$conn, $sql );
 	}
+
+	public function escape( $str ) {
+		return mysqli_real_escape_string( self::$conn, $str );
+	}
 }
