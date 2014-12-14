@@ -1,11 +1,9 @@
 <?php
 
 require_once 'config/config.php';
+require_once 'lib/db.php';
 
-$conn = mysqli_connect( DB_HOST, DB_USER, DB_PASS, DB_NAME );
+$db = new DB();
 
-$sql = "SELECT * FROM products";
-$result = mysqli_query( $conn, $sql );
-while ( $row = mysqli_fetch_assoc( $result ) ) {
-	print_r( $row );
-}
+$result = $db->get_results( "SELECT * FROM products" );
+print_r( $result );
