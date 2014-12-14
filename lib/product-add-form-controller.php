@@ -5,9 +5,9 @@ class Product_Add_Form_Controller {
 		global $db;
 		if ( !empty( $_POST ) ) {
 			$product_name = $_POST['product_name'];
-			$db->query( "INSERT INTO products( product_name )
-				VALUES ( '". $db->escape( $product_name ) ."' )
-				");
+
+			$product = new Product_Model( $product_name );
+			$product->save();
 		}
 ?>
 <h1>Insert new product!</h1>
