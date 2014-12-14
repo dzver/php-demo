@@ -12,10 +12,10 @@ class User_Model {
 	public function save() {
 		global $db;
 
-		$password_hash = password_hash(
-			SECRET_SALT . $this->password, PASSWORD_BCRYPT );
+		$password_hash = md5(
+			SECRET_SALT . $this->password );
 		$db->query( "INSERT INTO users( username, password )
 			VALUES('". $db->escape( $this->username ) ."','".
-			$password_hash ."')" );
+			$db->escape( $password_hash ) ."')" );
 	}
 }
