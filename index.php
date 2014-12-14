@@ -5,5 +5,13 @@ require_once 'lib/db.php';
 
 $db = new DB();
 
-$result = $db->get_results( "SELECT * FROM products" );
-print_r( $result );
+$products = $db->get_results( "SELECT * FROM products LIMIT 3" );
+
+foreach ( $products as $product ) {
+	?>
+		<div><span><?php echo $product->ID; ?>.</span>
+			<a href="/product/<?php echo $product->ID;
+				?>"><?php echo $product->product_name; ?></a>
+		</div>
+	<?php
+}
