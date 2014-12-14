@@ -13,14 +13,18 @@ if ( isset( $_GET['url'] )  ) {
 	}
 }
 
-echo $controller;
+if ( $controller == 'index' ) {
+	$products = $db->get_results( "SELECT * FROM products LIMIT 3" );
+	foreach ( $products as $product ) {
+		?>
+			<div><span><?php echo $product->ID; ?>.</span>
+				<a href="/product/<?php echo $product->ID;
+					?>"><?php echo $product->product_name; ?></a>
+			</div>
+		<?php
+	}
+}
 
-$products = $db->get_results( "SELECT * FROM products LIMIT 3" );
-foreach ( $products as $product ) {
-	?>
-		<div><span><?php echo $product->ID; ?>.</span>
-			<a href="/product/<?php echo $product->ID;
-				?>"><?php echo $product->product_name; ?></a>
-		</div>
-	<?php
+if ( $controller == 'product' ) {
+	echo 'HA!';
 }
